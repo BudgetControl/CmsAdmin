@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+    database:
+      container_name: budgetcontrol-db
+      image: mysql:5.7
+      restart: unless-stopped
+      ports:
+        - "3336:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        MYSQL_USER: ${DATABASE_USERNAME}
+        MYSQL_PASSWORD: ${DATABASE_PASSWORD}
+        MYSQL_DATABASE: ${DATABASE_NAME}
+      volumes:
+        - mysql_persistent:/var/lib/mysql
+      networks:
+        - budgetcontrol_network
+        
+volumes:
+  mysql_persistent:
+    name: budgetcontrol_core_database
+    external: false
+
+networks:
+  budgetcontrol_network:
+    external: false
+    name: budgetcontrol_network

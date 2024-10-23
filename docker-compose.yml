@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  cmsadmin:
+    image: node:18.0
+    container_name: budgetcontrol-cmsadmin
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: npm run build && npm run start
+    networks:
+      - budgetcontrol_network
+    restart: unless-stopped
+
+networks:
+  budgetcontrol_network:
+    external: true
+    name: budgetcontrol_network
