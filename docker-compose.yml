@@ -7,7 +7,7 @@ services:
     working_dir: /app
     volumes:
       - ./:/app
-    command: npm run build && npm run start
+    command: npm install && npm run build && npm run start
     networks:
       - budgetcontrol_network
     restart: unless-stopped
