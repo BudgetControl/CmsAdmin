@@ -2,11 +2,9 @@ version: '3.8'
 
 services:
     database:
-      container_name: budgetcontrol-db
+      container_name: budgetcontrol-mysql-db
       image: mysql:5.7
       restart: unless-stopped
-      ports:
-        - "3336:3306"
       environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         MYSQL_USER: ${DATABASE_USERNAME}

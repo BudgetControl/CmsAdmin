@@ -2,15 +2,12 @@ version: '3.8'
 
 services:
   cmsadmin:
-    image: node:18.20.4
+    image: mlabfactory/php8-apache:v1.3
     container_name: budgetcontrol-cmsadmin
-    working_dir: /app
-    volumes:
-      - ./:/app
-    command: npm install && npm run build && npm run start
     networks:
       - budgetcontrol_network
     restart: unless-stopped
+    command: tail -F /var/www/workdir/storage/logs/error.log 
 
 networks:
   budgetcontrol_network:
