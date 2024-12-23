@@ -7,7 +7,8 @@ services:
     networks:
       - budgetcontrol_network
     restart: unless-stopped
-    command: tail -F /var/www/workdir/storage/logs/error.log 
+    volumes:
+      - .:/var/www/workdir
 
 networks:
   budgetcontrol_network:

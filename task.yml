@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  cmsadmin:
+    command:
+      - docker-compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.db.yml up -
+      - docker container cp bin/apache/default.conf budgetcontrol-cmsadmin:/etc/apache2/sites-available/budgetcontrol.cloud.conf
+      - docker exec budgetcontrol-cmsadmin service apache2 restart
